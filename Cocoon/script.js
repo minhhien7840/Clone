@@ -3,8 +3,8 @@
  */
 const listProIntro = document.getElementsByClassName("product-introduce");
 const listProIntroContainer = document.getElementById("product-container");
-const prevBtn = document.getElementById('prev-btn');
-const nextBtn = document.getElementById('next-btn');
+const prevBtn = document.getElementsByClassName('prev-btn')[0];
+const nextBtn = document.getElementsByClassName('next-btn')[0];
 const colorIndex = [{
     background: "#FFC255",
     color: "rgb(63, 42, 0)",
@@ -73,19 +73,19 @@ function changColor(currentIndex) {
 const headerParralax = document.getElementById('parrallax-header');
 const parraContentContainer = document.getElementById('parra-content-container').getElementsByTagName('div')[0];
 const parrDesign = document.getElementById('parrallax-design');
-const imgDivParralax=document.getElementById('parralax-img').getElementsByTagName('div');
+const imgDivParralax = document.getElementById('parralax-img').getElementsByTagName('div');
 let lastScrollTop = 0;
 
 function onScroll() {
     let scrollTop = window.scrollY;
 
     if (parrDesign.getBoundingClientRect().top < 1000 && parrDesign.getBoundingClientRect().top > -240) {
-        headerParralax.style.transform = `translateY(-${scrollTop * 0.2}px)`; 
-        parraContentContainer.style.transform = `translateY(-${scrollTop * 0.15}px)`;  
-        imgDivParralax[0].style.transform = `translateY(${scrollTop * 0.25}px)`; 
-        imgDivParralax[1].style.transform = `translateY(${scrollTop * 0.15}px)`; 
-        imgDivParralax[2].style.transform = `translateY(${scrollTop * 0.075}px)`; 
-        imgDivParralax[3].style.transform = `translateY(-${scrollTop * 0.15}px)`; 
+        headerParralax.style.transform = `translateY(-${scrollTop * 0.2}px)`;
+        parraContentContainer.style.transform = `translateY(-${scrollTop * 0.15}px)`;
+        imgDivParralax[0].style.transform = `translateY(${scrollTop * 0.25}px)`;
+        imgDivParralax[1].style.transform = `translateY(${scrollTop * 0.15}px)`;
+        imgDivParralax[2].style.transform = `translateY(${scrollTop * 0.075}px)`;
+        imgDivParralax[3].style.transform = `translateY(-${scrollTop * 0.15}px)`;
     }
 
     lastScrollTop = scrollTop;
@@ -96,6 +96,34 @@ window.addEventListener('scroll', () => {
         window.requestAnimationFrame(onScroll);
     }
 });
+// best seller product slider
+const listProductBS = document.getElementById('list-product-best-seller');
+const widthProductBS = listProductBS.getElementsByTagName('div')[0].offsetWidth;
+const prevBtnBS = document.getElementsByClassName('prev-btn')[1];
+const nextBtnBS = document.getElementsByClassName('next-btn')[1];
+const slideLine= document.getElementById('slide-line');
+let index = 0;
+hiddenBtnBS(index);
+function hiddenBtnBS(index) {
+    prevBtnBS.style.opacity = index > 0 ? 1 : 0;
+    nextBtnBS.style.opacity = index < listProductBS.getElementsByClassName('product-best-seller').length - 2 ? 1 : 0;
+    prevBtnBS.disabled = index > 0 ? false : true;
+    nextBtnBS.disabled = index < listProductBS.getElementsByClassName('product-best-seller').length - 2 ? false : true;
+    slideLine.style.left=`${(index)*20}%`;
+}
 
+prevBtnBS.addEventListener("click", () => prevSlideBS());
+function prevSlideBS() {
+    changeSlideBS(index - 1);
+}
+nextBtnBS.addEventListener("click", () => nextSlideBS());
+function nextSlideBS() {
+    changeSlideBS(index + 1);
+}
+function changeSlideBS(currentIndex) {
+    index = currentIndex;
+    listProductBS.style.transform = `translateX(-${widthProductBS * index}px)`;
+    hiddenBtnBS(index);
+}
 
 

@@ -230,7 +230,6 @@ body {
     height: 70px;
     opacity: 0;
     transition: opacity 0.3s linear, transform 0.5s ease-out;
-    transform: translateY(-50%);
 }
 
 .slide-btn:hover {
@@ -238,17 +237,18 @@ body {
 
 }
 
-#slide-show:hover .slide-btn {
+#slide-show:hover .slide-btn,
+#list-product-bs-container:hover .slide-btn {
     opacity: 1;
     transform: translateY(-50%);
 }
 
-#prev-btn {
+.prev-btn {
     left: 0;
     transform: translate(-100%, -50%);
 }
 
-#next-btn {
+.next-btn {
     right: 0;
     transform: translate(100%, -50%);
 }
@@ -392,11 +392,12 @@ body {
     display: flex;
     flex-direction: row;
     background-color: #FEFBF4;
+    border-bottom: 1px solid #EDE0CC;
 }
 
 #infinite-text-container>p {
     text-transform: uppercase;
-    animation: scroll-left  15s linear infinite;
+    animation: scroll-left 15s linear infinite;
     font-family: Barlow Condensed;
     font-weight: 700;
     font-size: 72px;
@@ -404,11 +405,201 @@ body {
     padding: 30px 50px;
 }
 
-@keyframes scroll-left  {
+@keyframes scroll-left {
     0% {
         transform: translateX(0);
     }
+
     100% {
         transform: translateX(-100%);
     }
+}
+
+#certifications {
+    padding-top: 40px;
+    background-color: #FEFBF4;
+    padding-bottom: 70px;
+}
+
+#header-certifications {
+    text-transform: uppercase;
+    font-family: Barlow Condensed;
+    font-size: 28px;
+    line-height: 24px;
+    color: #1F1C17;
+    text-align: center;
+    padding-bottom: 32px;
+
+}
+
+#list-cert {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+}
+
+.item-cert {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.item-cert>* {
+    margin-top: 28px;
+}
+
+.name-us-cert {
+    font-family: Vollkorn Regular;
+    font-size: 36px;
+    line-height: 36px;
+    color: rgb(31, 28, 23);
+    margin-top: 0;
+}
+
+.name-vn-cert {
+    font-family: Barlow;
+    font-size: 18px;
+    line-height: 22px;
+    color: rgb(65, 69, 72);
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.conten-cert {
+    color: rgb(118, 115, 111);
+    text-align: center;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+#best-seller-container {
+
+    padding-bottom: 50px;
+    padding-top: 50px;
+}
+
+#best-seller-container>div:first-of-type {
+    display: flex;
+    flex-direction: row;
+}
+
+#best-seller-container>div>div:first-of-type {
+    display: flex;
+    justify-content: end;
+    flex-direction: column;
+    min-width: 33.875rem;
+    margin-left: 1rem;
+}
+
+#list-product-bs-container {
+    position: relative;
+    height: 100%;
+    width: calc(100%- 33.875rem);
+    overflow: hidden;
+}
+
+#list-product-best-seller {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    transition: transform 0.3s ease-out;
+}
+
+.product-best-seller {
+    width: 22rem;
+    padding: 20px;
+    height: 100%;
+    flex-shrink: 0;
+}
+
+.img-product-best-seller-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 6px;
+}
+
+.img-product-best-seller {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.infor-product-best-seller {
+    display: flex;
+    flex-direction: row;
+    padding-top: 20px;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.infor-product-best-seller>p>* {
+    padding: 10px 0;
+}
+
+.buy-btn {
+    padding: 27px;
+    border: none;
+    background-color: #EDE0CC;
+    transition: background-color 0.5s linear;
+    border-radius: 6px;
+}
+
+.buy-btn>i {
+    font-size: 16px;
+
+}
+
+.buy-btn:hover {
+    background-color: #1F1C17;
+    color: #fefbf4;
+}
+
+.restock {
+    line-height: 24px;
+    font: 600 1em Barlow;
+    color: rgb(190, 47, 49);
+}
+
+.in-stock {
+    line-height: 24px;
+    font-weight: 500;
+}
+#slide-pagination{
+    position: absolute;
+    border-radius:2px;
+    bottom: 0;
+    background-color: #EDE0CC;
+    height:2px;
+    width: 85%;
+}
+#slide-line{
+    position: absolute;
+    border-radius:2px;
+    bottom: 0;
+    left:0;
+    background-color: #1F1C17;
+    width: calc(85%/4);
+    height:2px;
+    transition: left 0.5s ease-in-out;
+}
+#posts{
+    display: flex;
+    flex-direction: row;
+}
+.post{
+    width: 33%;
+    padding: 20px;
+}
+.img-post{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease-in-out;
+}
+.img-post:hover{
+    transform: scale(1.2);
 }
